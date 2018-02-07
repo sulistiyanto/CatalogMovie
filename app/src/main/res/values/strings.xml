@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Catalog Movie</string>
+    <string name="action_settings">Settings</string>
+    <string name="cari">Cari</string>
+    <string name="cari_movie">Cari movie</string>
+    <string name="image_poster">Image Poster</string>
+</resources>
