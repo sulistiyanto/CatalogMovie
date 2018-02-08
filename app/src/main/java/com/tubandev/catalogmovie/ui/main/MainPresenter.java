@@ -1,4 +1,4 @@
-package com.tubandev.catalogmovie.ui;
+package com.tubandev.catalogmovie.ui.main;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -41,7 +41,12 @@ public class MainPresenter implements MainContract.UserActionsListener {
                     public void onResponse(Call<MainResult> call, Response<MainResult> response) {
                         List<Result> resultList = response.body().getResults();
                         if (resultList.size() > 0) {
-                            SearchAdapter adapter = new SearchAdapter(context, resultList);
+                            SearchAdapter adapter = new SearchAdapter(context, resultList, new SearchAdapter.OnItemClickListener() {
+                                @Override
+                                public void onItemClicked(Result result) {
+                                    view.gotoDetailMoview(result);
+                                }
+                            });
                             view.showMovie(adapter);
                         } else {
                             view.showError("Film yang Anda cari tidak ada");

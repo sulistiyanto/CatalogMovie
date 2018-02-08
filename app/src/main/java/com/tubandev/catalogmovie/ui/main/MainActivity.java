@@ -1,5 +1,6 @@
-package com.tubandev.catalogmovie.ui;
+package com.tubandev.catalogmovie.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 
 import com.tubandev.catalogmovie.R;
 import com.tubandev.catalogmovie.adapter.SearchAdapter;
+import com.tubandev.catalogmovie.model.Result;
+import com.tubandev.catalogmovie.ui.detail.DetailMovieActivity;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
@@ -66,5 +69,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void setErrorFieldSearch(String message) {
         editTextSearch.setError(message);
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void gotoDetailMoview(Result result) {
+        Intent intent = new Intent(this, DetailMovieActivity.class);
+        startActivity(intent);
     }
 }

@@ -22,10 +22,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchHold
 
     private Context mContext;
     private List<Result> resultList;
+    private OnItemClickListener listener;
 
-    public SearchAdapter(Context mContext, List<Result> resultList) {
+    public SearchAdapter(Context mContext, List<Result> resultList, OnItemClickListener listener) {
         this.mContext = mContext;
         this.resultList = resultList;
+        this.listener = listener;
     }
 
     @Override
@@ -44,6 +46,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchHold
         return resultList.size();
     }
 
+
+    public interface OnItemClickListener {
+        void onItemClicked(Result result);
+    }
+
     public class SearchHolder extends RecyclerView.ViewHolder {
 
         private ImageView imagePoster;
@@ -59,7 +66,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchHold
             txtDate = itemView.findViewById(R.id.txtDate);
         }
 
-        public void bindData(Result result) {
+        public void bindData(final Result result) {
             Glide.with(mContext)
                     .load("http://image.tmdb.org/t/p/w185" + result.getPosterPath())
                     .into(imagePoster);
@@ -67,6 +74,13 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchHold
             txtTitle.setText(result.getTitle());
             txtOverView.setText(result.getOverview());
             txtDate.setText(result.getReleaseDate());
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClicked(result);
+                }
+            });
         }
     }
 }
