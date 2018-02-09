@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.tubandev.catalogmovie.R;
 import com.tubandev.catalogmovie.adapter.SearchAdapter;
 import com.tubandev.catalogmovie.model.Result;
-import com.tubandev.catalogmovie.ui.detail.DetailMovieActivity;
+import com.tubandev.catalogmovie.ui.detail.DetailActivity;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         recyclerView.setHasFixedSize(true);
 
         Button btn = findViewById(R.id.button);
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +72,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void gotoDetailMoview(Result result) {
-        Intent intent = new Intent(this, DetailMovieActivity.class);
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("result", result);
         startActivity(intent);
     }
 }
