@@ -44,7 +44,7 @@ public class MainPresenter implements MainContract.UserActionsListener {
                             SearchAdapter adapter = new SearchAdapter(context, resultList, new SearchAdapter.OnItemClickListener() {
                                 @Override
                                 public void onItemClicked(Result result) {
-                                    view.gotoDetailMoview(result);
+                                    view.gotoDetailMovie(result);
                                 }
                             });
                             view.showMovie(adapter);

@@ -15,7 +15,7 @@ public interface MainContract {
         void showMovie(SearchAdapter adapter);
         void showError(String message);
         void setErrorFieldSearch(String message);
-        void gotoDetailMoview(Result result);
+        void gotoDetailMovie(Result result);
     }
 
     interface UserActionsListener {

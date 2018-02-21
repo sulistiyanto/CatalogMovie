@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void gotoDetailMoview(Result result) {
+    public void gotoDetailMovie(Result result) {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra("result", result);
         startActivity(intent);
