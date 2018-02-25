@@ -26,10 +26,6 @@
         <activity
             android:name=".ui.detail.DetailActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.search.MainActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -27,7 +27,6 @@ import butterknife.OnClick;
  */
 public class SearchFragment extends Fragment implements SearchContract.View {
 
-
     private SearchContract.UserActionsListener listener;
 
     @BindView(R.id.recyclerView)
