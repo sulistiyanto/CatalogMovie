@@ -1,4 +1,4 @@
-package com.tubandev.catalogmovie.ui.main;
+package com.tubandev.catalogmovie.ui.search;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -20,11 +20,11 @@ import retrofit2.Response;
  * Created by sulistiyanto on 07/02/18.
  */
 
-public class MainPresenter implements MainContract.UserActionsListener {
+public class SearchPresenter implements SearchContract.UserActionsListener {
 
-    private MainContract.View view;
+    private SearchContract.View view;
 
-    public MainPresenter(MainContract.View view) {
+    public SearchPresenter(SearchContract.View view) {
         this.view = view;
     }
 

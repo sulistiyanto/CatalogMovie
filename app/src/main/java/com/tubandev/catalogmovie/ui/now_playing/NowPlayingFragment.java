@@ -1,4 +1,4 @@
-package com.tubandev.catalogmovie.ui;
+package com.tubandev.catalogmovie.ui.now_playing;
 
 
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.tubandev.catalogmovie.ui.main;
+package com.tubandev.catalogmovie.ui.search;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,9 +17,9 @@ import com.tubandev.catalogmovie.adapter.SearchAdapter;
 import com.tubandev.catalogmovie.model.Result;
 import com.tubandev.catalogmovie.ui.detail.DetailActivity;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View {
+public class MainActivity extends AppCompatActivity implements SearchContract.View {
 
-    private MainContract.UserActionsListener listener;
+    private SearchContract.UserActionsListener listener;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private EditText editTextSearch;
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        listener = new MainPresenter(this);
-        editTextSearch = findViewById(R.id.editText);
+        listener = new SearchPresenter(this);
+        editTextSearch = findViewById(R.id.editTextSearch);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
         recyclerView = findViewById(R.id.recyclerView);

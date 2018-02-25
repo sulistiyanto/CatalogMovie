@@ -1,4 +1,4 @@
-package com.tubandev.catalogmovie.ui.main;
+package com.tubandev.catalogmovie.ui.search;
 
 import android.content.Context;
 
@@ -9,7 +9,7 @@ import com.tubandev.catalogmovie.model.Result;
  * Created by sulistiyanto on 07/02/18.
  */
 
-public interface MainContract {
+public interface SearchContract {
 
     interface View {
         void showMovie(SearchAdapter adapter);
