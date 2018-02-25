@@ -32,6 +32,8 @@ public class HomeActivity extends AppCompatActivity
     Toolbar toolbar;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +44,11 @@ public class HomeActivity extends AppCompatActivity
         getSupportActionBar().setTitle(R.string.now_playing);
         presenter = new HomePresenter(this);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
