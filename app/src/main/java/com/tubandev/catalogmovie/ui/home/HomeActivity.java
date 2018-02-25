@@ -19,17 +19,28 @@ import com.tubandev.catalogmovie.ui.now_playing.NowPlayingFragment;
 import com.tubandev.catalogmovie.ui.search.SearchFragment;
 import com.tubandev.catalogmovie.ui.up_coming.UpComingFragment;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, HomeContract.View {
 
     private FragmentTransaction fragmentTransaction;
+    private HomePresenter presenter;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.now_playing);
+        presenter = new HomePresenter(this);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -47,12 +58,7 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        presenter.backPressed(drawer);
     }
 
     @Override
@@ -67,7 +73,6 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -80,18 +85,31 @@ public class HomeActivity extends AppCompatActivity
             fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.container, new NowPlayingFragment());
             fragmentTransaction.commitAllowingStateLoss();
+            getSupportActionBar().setTitle(R.string.now_playing);
         } else if (id == R.id.nav_upcoming) {
             fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.container, new UpComingFragment());
             fragmentTransaction.commitAllowingStateLoss();
+            getSupportActionBar().setTitle(R.string.upcoming);
         } else if (id == R.id.nav_search) {
             fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.container, new SearchFragment());
             fragmentTransaction.commitAllowingStateLoss();
+            getSupportActionBar().setTitle(R.string.search);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void closeDrawer() {
+        drawer.closeDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public void actionBackPressed() {
+        super.onBackPressed();
     }
 }
