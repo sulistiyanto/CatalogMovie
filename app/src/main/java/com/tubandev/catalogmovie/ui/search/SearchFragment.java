@@ -5,45 +5,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.tubandev.catalogmovie.R;
 import com.tubandev.catalogmovie.adapter.SearchAdapter;
+import com.tubandev.catalogmovie.base.BaseActionListener;
+import com.tubandev.catalogmovie.base.BaseFragment;
 import com.tubandev.catalogmovie.model.Result;
 import com.tubandev.catalogmovie.ui.detail.DetailActivity;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchFragment extends Fragment implements SearchContract.View {
+public class SearchFragment extends BaseFragment implements SearchView {
 
-    private SearchContract.UserActionsListener listener;
-
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @BindView(R.id.progressBar)
-    ProgressBar progressBar;
-    @BindView(R.id.editTextSearch)
-    EditText editTextSearch;
+    private BaseActionListener listener;
 
     public SearchFragment() {
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_base, container, false);
         ButterKnife.bind(this, rootView);
 
         listener = new SearchPresenter(this);
@@ -86,6 +76,6 @@ public class SearchFragment extends Fragment implements SearchContract.View {
         String search = editTextSearch.getText().toString();
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
-        listener.searchMovie(getContext(), search);
+        listener.loadData(getContext(), search);
     }
 }

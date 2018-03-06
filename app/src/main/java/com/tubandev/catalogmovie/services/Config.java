@@ -55,8 +55,8 @@ public class Config {
         return retrofit;
     }
 
-    public static SearchEndpoint getService(){
-        SearchEndpoint searchEndpoint = getClient(URL).create(SearchEndpoint.class);
-        return searchEndpoint;
+    public static ApiEndpoint getService(){
+        ApiEndpoint apiEndpoint = getClient(URL).create(ApiEndpoint.class);
+        return apiEndpoint;
     }
 }

@@ -1,14 +1,14 @@
 package com.tubandev.catalogmovie.ui.search;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import com.tubandev.catalogmovie.adapter.SearchAdapter;
+import com.tubandev.catalogmovie.base.BaseActionListener;
 import com.tubandev.catalogmovie.model.MainResult;
 import com.tubandev.catalogmovie.model.Result;
 import com.tubandev.catalogmovie.services.Config;
-import com.tubandev.catalogmovie.services.SearchEndpoint;
+import com.tubandev.catalogmovie.services.ApiEndpoint;
+import com.tubandev.catalogmovie.utilities.Connection;
 
 import java.util.List;
 
@@ -20,21 +20,22 @@ import retrofit2.Response;
  * Created by sulistiyanto on 07/02/18.
  */
 
-public class SearchPresenter implements SearchContract.UserActionsListener {
+public class SearchPresenter implements BaseActionListener {
 
-    private SearchContract.View view;
+    private SearchView view;
 
-    public SearchPresenter(SearchContract.View view) {
+    public SearchPresenter(SearchView view) {
         this.view = view;
     }
 
     @Override
-    public void searchMovie(final Context context, String search) {
-        if (isConnecting(context)) {
+    public void loadData(final Context context, String search) {
+        boolean connected = new Connection().isConnecting(context);
+        if (connected) {
             if (search.equals("")) {
                 view.setErrorFieldSearch("Kolom pencarian harus diisi");
             } else {
-                SearchEndpoint api = Config.getService();
+                ApiEndpoint api = Config.getService();
                 Call<MainResult> call = api.searchMovie(search);
                 call.enqueue(new Callback<MainResult>() {
                     @Override
@@ -65,18 +66,4 @@ public class SearchPresenter implements SearchContract.UserActionsListener {
         }
     }
 
-    private boolean isConnecting(Context context){
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm != null){
-            NetworkInfo[] info = cm.getAllNetworkInfo();
-            if (info != null) {
-                for (int i = 0; i < info.length; i++) {
-                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
 }

@@ -51,9 +51,7 @@ public class HomeActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.container, new NowPlayingFragment());
-        fragmentTransaction.commitAllowingStateLoss();
+        showNowPlaying();
     }
 
     @Override
@@ -80,25 +78,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.nav_now_playing) {
-            fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container, new NowPlayingFragment());
-            fragmentTransaction.commitAllowingStateLoss();
-            getSupportActionBar().setTitle(R.string.now_playing);
-        } else if (id == R.id.nav_upcoming) {
-            fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container, new UpComingFragment());
-            fragmentTransaction.commitAllowingStateLoss();
-            getSupportActionBar().setTitle(R.string.upcoming);
-        } else if (id == R.id.nav_search) {
-            fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container, new SearchFragment());
-            fragmentTransaction.commitAllowingStateLoss();
-            getSupportActionBar().setTitle(R.string.search);
-        }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        presenter.actionNavigationSelected(id);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -111,5 +91,29 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public void actionBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void showNowPlaying() {
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container, new NowPlayingFragment());
+        fragmentTransaction.commitAllowingStateLoss();
+        getSupportActionBar().setTitle(R.string.now_playing);
+    }
+
+    @Override
+    public void showUpcoming() {
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container, new UpComingFragment());
+        fragmentTransaction.commitAllowingStateLoss();
+        getSupportActionBar().setTitle(R.string.upcoming);
+    }
+
+    @Override
+    public void showSearch() {
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container, new SearchFragment());
+        fragmentTransaction.commitAllowingStateLoss();
+        getSupportActionBar().setTitle(R.string.search);
     }
 }
