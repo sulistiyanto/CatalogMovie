@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Catalog Movie</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="cari">Cari</string>
+    <string name="cari_movie">Cari Film</string>
+    <string name="image_poster">Poster Gambar</string>
+    <string name="title_activity_detail_movie">DetailMovieActivity</string>
+    <string name="title">Judul</string>
+    <string name="release_date">Tanggal Peluncuran</string>
+    <string name="popularity">Popularitas</string>
+    <string name="overview">Overview</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="upcoming">Yang Datang</string>
+    <string name="now_playing">Sekarang Diputar</string>
+    <string name="search">Cari</string>
+    <string name="language_setting">Ganti Bahasa</string>
+    <string name="favorite">Favorit</string>
+
+</resources>

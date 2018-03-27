@@ -12,12 +12,12 @@
         android:layout_height="180dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="24dp"
+        android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@mipmap/ic_launcher_round"
-        android:contentDescription="@string/app_name" />
+        tools:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
         android:id="@+id/textView"
@@ -105,4 +105,16 @@
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4"
         tools:text="Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies." />
+
+    <ImageView
+        android:id="@+id/imgStar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_star_border" />
+
 </android.support.constraint.ConstraintLayout>

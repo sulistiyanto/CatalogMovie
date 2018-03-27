@@ -1,10 +1,9 @@
 package com.tubandev.catalogmovie.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.provider.Settings;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +18,8 @@ import com.tubandev.catalogmovie.ui.now_playing.NowPlayingFragment;
 import com.tubandev.catalogmovie.ui.search.SearchFragment;
 import com.tubandev.catalogmovie.ui.up_coming.UpComingFragment;
 
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -27,6 +28,11 @@ public class HomeActivity extends AppCompatActivity
 
     private FragmentTransaction fragmentTransaction;
     private HomePresenter presenter;
+    private static final String LOCALE_KEY = "localekey";
+    private static final String INDONESIA_LOCALE = "id";
+    private static final String ENGLISH_LOCALE = "en_US";
+    private static final String LOCALE_PREF_KEY = "localePref";
+    private Locale locale;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -69,6 +75,8 @@ public class HomeActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            startActivity(mIntent);
             return true;
         }
         return super.onOptionsItemSelected(item);

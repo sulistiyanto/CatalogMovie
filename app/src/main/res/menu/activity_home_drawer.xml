@@ -6,17 +6,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_now_playing"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_play_circle"
             android:checked="true"
             android:title="@string/now_playing" />
         <item
             android:id="@+id/nav_upcoming"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_assistant"
             android:title="@string/upcoming" />
         <item
             android:id="@+id/nav_search"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_search"
             android:title="@string/search" />
+        <item
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/ic_star"
+            android:title="@string/favorite" />
     </group>
 
 </menu>

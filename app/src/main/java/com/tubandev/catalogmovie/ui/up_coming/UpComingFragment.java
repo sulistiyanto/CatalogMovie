@@ -17,7 +17,6 @@ import com.tubandev.catalogmovie.base.BaseFragment;
 import com.tubandev.catalogmovie.base.BaseView;
 import com.tubandev.catalogmovie.model.Result;
 import com.tubandev.catalogmovie.ui.detail.DetailActivity;
-import com.tubandev.catalogmovie.ui.now_playing.NowPlayingPresenter;
 
 import butterknife.ButterKnife;
 
